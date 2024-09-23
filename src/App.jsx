@@ -34,7 +34,6 @@ function PersonalInfoForm({ info, setInfo }) {
         <Input
           name="Phone"
           type="tel"
-          maxLength="15"
           value={info.phone}
           onChange={(e) => setInfo({ ...info, phone: e.target.value })}
         />
@@ -66,46 +65,39 @@ function Education({ educationList }) {
   );
 }
 
-function EducationForm({ educationList, setEducationList, setShowForm }) {
-  const [school, setSchool] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
-  const [degree, setDegree] = useState('');
-  const [location, setLocation] = useState('');
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    let newEd = { school, startDate, endDate, degree, location, id: uuidv4() };
-    setEducationList([educationList, newEd]);
-    setShowForm(false);
-  }
-
+function EducationForm({ setShowForm, education, setEducation, handleSubmit }) {
   return (
     <form className="educationForm educationBody" onSubmit={handleSubmit}>
       <Input
         name="School"
-        value={school}
-        onChange={(e) => setSchool(e.target.value)}
+        value={education.school}
+        onChange={(e) => setEducation({ ...education, school: e.target.value })}
       />
       <Input
         name="Start Date"
-        value={startDate}
-        onChange={(e) => setStartDate(e.target.value)}
+        value={education.startDate}
+        onChange={(e) =>
+          setEducation({ ...education, startDate: e.target.value })
+        }
       />
       <Input
         name="End Date"
-        value={endDate}
-        onChange={(e) => setEndDate(e.target.value)}
+        value={education.endDate}
+        onChange={(e) =>
+          setEducation({ ...education, endDate: e.target.value })
+        }
       />
       <Input
         name="Degree"
-        value={degree}
-        onChange={(e) => setDegree(e.target.value)}
+        value={education.degree}
+        onChange={(e) => setEducation({ ...education, degree: e.target.value })}
       />
       <Input
         name="Location"
-        value={location}
-        onChange={(e) => setLocation(e.target.value)}
+        value={education.location}
+        onChange={(e) =>
+          setEducation({ ...education, location: e.target.value })
+        }
       />
       <div className="buttons">
         <input type="Submit" />
@@ -119,21 +111,58 @@ function EducationForm({ educationList, setEducationList, setShowForm }) {
   );
 }
 
-function EducationCard(props) {
+function EducationCard({ educationList, setEducationList }) {
   const [showForm, setShowForm] = useState(false);
+  const [education, setEducation] = useState({});
 
-  console.log(props);
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (education.id) {
+      // is edit
+      let newEducationList = educationList.map((e) => {
+        return e.id === education.id ? education : e;
+      });
+      setEducationList(newEducationList);
+    } else {
+      let newEd = { ...education, id: uuidv4() };
+      setEducationList([...educationList, newEd]);
+    }
+    setShowForm(false);
+  }
+
   if (showForm) {
-    var body = <EducationForm {...props} setShowForm={setShowForm} />;
+    var body = (
+      <EducationForm
+        setShowForm={setShowForm}
+        education={education}
+        setEducation={setEducation}
+        handleSubmit={handleSubmit}
+      />
+    );
   } else {
     var body = (
       <div className="educationBody">
         <div>
-          {props.educationList.map((ed) => (
-            <div key={ed.id}> {ed.school} </div>
+          {educationList.map((ed) => (
+            <div
+              key={ed.id}
+              onClick={(e) => {
+                setShowForm(true);
+                setEducation(ed);
+              }}
+            >
+              {ed.school}
+            </div>
           ))}
         </div>
-        <button onClick={(e) => setShowForm(true)}>Add</button>
+        <button
+          onClick={(e) => {
+            setShowForm(true);
+            setEducation({});
+          }}
+        >
+          Add
+        </button>
       </div>
     );
   }
@@ -150,7 +179,7 @@ function Input({
   type = 'text',
   onChange,
   value = '',
-  maxLength = '30',
+  maxLength = '40',
   required = true,
   name = '',
 }) {
@@ -191,7 +220,6 @@ function App() {
   const [info, setInfo] = useState(_info);
   const [educationList, setEducationList] = useState(_education);
 
-  console.log(info);
   return (
     <div className="body">
       <div className="forms">
