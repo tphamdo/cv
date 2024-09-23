@@ -1,6 +1,8 @@
 import { useState, Fragment } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import './App.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
 function PersonalInfo({ info }) {
   return (
@@ -114,8 +116,27 @@ function EducationForm({
   );
 }
 
+function ExpandIcon({ handleClick }) {
+  const [rotation, setRotation] = useState(0);
+  return (
+    <FontAwesomeIcon
+      icon={faChevronUp}
+      onClick={(e) => {
+        if (handleClick) handleClick(e);
+        setRotation((prevRotation) => (prevRotation === 0 ? 180 : 0));
+      }}
+      style={{
+        transition: 'transform .3s',
+        transform: `rotate(${rotation}deg)`,
+        fontSize: '1rem',
+      }}
+    />
+  );
+}
+
 function EducationCard({ educationList, setEducationList }) {
   const [showForm, setShowForm] = useState(false);
+  const [showBody, setShowBody] = useState(false);
   const [education, setEducation] = useState({});
 
   function handleSubmit(e) {
@@ -142,7 +163,9 @@ function EducationCard({ educationList, setEducationList }) {
     setShowForm(false);
   }
 
-  if (showForm) {
+  if (!showBody) {
+    var body = null;
+  } else if (showForm) {
     var body = (
       <EducationForm
         education={education}
@@ -182,7 +205,10 @@ function EducationCard({ educationList, setEducationList }) {
 
   return (
     <div className="educationCard">
-      <h3> Education </h3>
+      <div className="header">
+        <h3> Education </h3>
+        <ExpandIcon handleClick={() => setShowBody((show) => !show)} />
+      </div>
       {body}
     </div>
   );

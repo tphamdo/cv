@@ -41,6 +41,11 @@ select {
   border-radius: 8px;
 }
 
+.educationCard .header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .educationForm,
 .personalInfoForm {
   display: flex;
