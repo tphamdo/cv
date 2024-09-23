@@ -65,7 +65,13 @@ function Education({ educationList }) {
   );
 }
 
-function EducationForm({ setShowForm, education, setEducation, handleSubmit }) {
+function EducationForm({
+  education,
+  setEducation,
+  handleSubmit,
+  handleCancel,
+  handleDelete,
+}) {
   return (
     <form className="educationForm educationBody" onSubmit={handleSubmit}>
       <Input
@@ -101,11 +107,8 @@ function EducationForm({ setShowForm, education, setEducation, handleSubmit }) {
       />
       <div className="buttons">
         <input type="Submit" />
-        <input
-          type="button"
-          value="Cancel"
-          onClick={(e) => setShowForm(false)}
-        />
+        <input type="button" value="Cancel" onClick={handleCancel} />
+        <input type="button" value="Delete" onClick={handleDelete} />
       </div>
     </form>
   );
@@ -130,13 +133,23 @@ function EducationCard({ educationList, setEducationList }) {
     setShowForm(false);
   }
 
+  function handleCancel() {
+    setShowForm(false);
+  }
+
+  function handleDelete() {
+    setEducationList(educationList.filter((e) => e.id !== education.id));
+    setShowForm(false);
+  }
+
   if (showForm) {
     var body = (
       <EducationForm
-        setShowForm={setShowForm}
         education={education}
         setEducation={setEducation}
         handleSubmit={handleSubmit}
+        handleCancel={handleCancel}
+        handleDelete={handleDelete}
       />
     );
   } else {
