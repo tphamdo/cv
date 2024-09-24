@@ -21,16 +21,19 @@ select {
   --dark-blue: #0e374f;
 }
 
+body {
+  font-size: 18px;
+  font-family: sans-serif, serif;
+  min-height: 100vh;
+  padding: 48px;
+  background-color: var(--grey);
+  min-width: fit-content;
+}
+
 .body {
   display: flex;
   justify-content: center;
   gap: 24px;
-  min-height: 100vh;
-  padding: 48px;
-  font-family: sans-serif, serif;
-  font-size: 18px;
-  background-color: var(--grey);
-  min-width: fit-content;
 }
 
 .educationCard,
@@ -41,9 +44,11 @@ select {
   border-radius: 8px;
 }
 
-.educationCard .header {
+.educationCard .header,
+.personalInfoCard .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .educationForm,

@@ -1,8 +1,7 @@
 import { useState, Fragment } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import './App.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import ExpandIcon from './components/ExpandIcon.jsx';
 
 function PersonalInfo({ info }) {
   return (
@@ -17,10 +16,10 @@ function PersonalInfo({ info }) {
   );
 }
 
-function PersonalInfoForm({ info, setInfo }) {
+function PersonalInfoCard({ info, setInfo }) {
   return (
     <div className="personalInfoCard">
-      <h3> Personal Info </h3>
+      <h3 className="header"> Personal Info </h3>
       <form className="personalInfoForm personalInfoBody">
         <Input
           name="Name"
@@ -52,16 +51,16 @@ function PersonalInfoForm({ info, setInfo }) {
 function Education({ educationList }) {
   return (
     <div className="education">
-      <h3> Education </h3>
+      <h3 className="header"> Education </h3>
       {educationList.map((ed) => (
-        <Fragment key={ed.id}>
+        <div className="education_entry" key={ed.id}>
           <div key="school">{ed.school}</div>
           <div key="date">
             {ed.startDate} - {ed.endDate}
           </div>
           <div key="degree">{ed.degree}</div>
           <div key="location">{ed.location}</div>
-        </Fragment>
+        </div>
       ))}
     </div>
   );
@@ -116,27 +115,9 @@ function EducationForm({
   );
 }
 
-function ExpandIcon({ handleClick }) {
-  const [rotation, setRotation] = useState(0);
-  return (
-    <FontAwesomeIcon
-      icon={faChevronUp}
-      onClick={(e) => {
-        if (handleClick) handleClick(e);
-        setRotation((prevRotation) => (prevRotation === 0 ? 180 : 0));
-      }}
-      style={{
-        transition: 'transform .3s',
-        transform: `rotate(${rotation}deg)`,
-        fontSize: '1rem',
-      }}
-    />
-  );
-}
-
 function EducationCard({ educationList, setEducationList }) {
   const [showForm, setShowForm] = useState(false);
-  const [showBody, setShowBody] = useState(false);
+  const [showBody, setShowBody] = useState(true);
   const [education, setEducation] = useState({});
 
   function handleSubmit(e) {
@@ -207,7 +188,10 @@ function EducationCard({ educationList, setEducationList }) {
     <div className="educationCard">
       <div className="header">
         <h3> Education </h3>
-        <ExpandIcon handleClick={() => setShowBody((show) => !show)} />
+        <ExpandIcon
+          initClosed={false}
+          handleClick={() => setShowBody((show) => !show)}
+        />
       </div>
       {body}
     </div>
@@ -262,7 +246,7 @@ function App() {
   return (
     <div className="body">
       <div className="forms">
-        <PersonalInfoForm info={info} setInfo={setInfo} />
+        <PersonalInfoCard info={info} setInfo={setInfo} />
         <EducationCard
           educationList={educationList}
           setEducationList={setEducationList}
