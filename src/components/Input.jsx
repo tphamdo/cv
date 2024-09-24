@@ -2,7 +2,7 @@ function Input({
   type = 'text',
   onChange,
   value = '',
-  maxLength = '40',
+  maxLength = '50',
   required = true,
   name = '',
 }) {
