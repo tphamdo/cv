@@ -4,7 +4,7 @@ const exampleData = {
   personalInfo: {
     name: 'Trueman Phamdo',
     email: 'trueman@phamdo.com',
-    phone: '(410)-953-9920',
+    phone: '410-953-9920',
     address: 'Ellicott City, MD',
   },
   educationList: [
