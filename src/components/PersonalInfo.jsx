@@ -1,3 +1,5 @@
+import { PropTypes } from 'prop-types';
+
 function PersonalInfo({ info }) {
   return (
     <div className="cv-header">
@@ -10,5 +12,9 @@ function PersonalInfo({ info }) {
     </div>
   );
 }
+
+PersonalInfo.propTypes = {
+  info: PropTypes.object,
+};
 
 export default PersonalInfo;

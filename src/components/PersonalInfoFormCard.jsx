@@ -1,3 +1,4 @@
+import { PropTypes } from 'prop-types';
 import { useState } from 'react';
 import Input from './Input.jsx';
 import ExpandIcon from './ExpandIcon.jsx';
@@ -43,5 +44,10 @@ function PersonalInfoFormCard({ info, setInfo }) {
     </div>
   );
 }
+
+PersonalInfoFormCard.propTypes = {
+  info: PropTypes.object,
+  setInfo: PropTypes.func,
+};
 
 export default PersonalInfoFormCard;

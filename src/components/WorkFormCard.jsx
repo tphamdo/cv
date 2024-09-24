@@ -1,3 +1,4 @@
+import { PropTypes } from 'prop-types';
 import { useState } from 'react';
 import WorkForm from './WorkForm.jsx';
 import ExpandIcon from './ExpandIcon.jsx';
@@ -32,10 +33,11 @@ function WorkFormCard({ workList, setWorkList }) {
     setShowForm(false);
   }
 
+  var body;
   if (!showBody) {
-    var body = null;
+    body = null;
   } else if (showForm) {
-    var body = (
+    body = (
       <WorkForm
         work={work}
         setWork={setWork}
@@ -45,13 +47,13 @@ function WorkFormCard({ workList, setWorkList }) {
       />
     );
   } else {
-    var body = (
+    body = (
       <div className="card_body">
         {workList.map((w) => (
           <div
             className="card_entry"
             key={w.id}
-            onClick={(e) => {
+            onClick={() => {
               setShowForm(true);
               setWork(w);
             }}
@@ -60,7 +62,7 @@ function WorkFormCard({ workList, setWorkList }) {
           </div>
         ))}
         <button
-          onClick={(e) => {
+          onClick={() => {
             setShowForm(true);
             setWork({});
           }}
@@ -84,5 +86,10 @@ function WorkFormCard({ workList, setWorkList }) {
     </div>
   );
 }
+
+WorkFormCard.propTypes = {
+  workList: PropTypes.array,
+  setWorkList: PropTypes.func,
+};
 
 export default WorkFormCard;

@@ -1,3 +1,5 @@
+import { PropTypes } from 'prop-types';
+
 function Education({ educationList }) {
   return (
     <div className="education">
@@ -21,5 +23,9 @@ function Education({ educationList }) {
     </div>
   );
 }
+
+Education.propTypes = {
+  educationList: PropTypes.array,
+};
 
 export default Education;

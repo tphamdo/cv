@@ -1,3 +1,5 @@
+import { PropTypes } from 'prop-types';
+
 function Work({ workList }) {
   return (
     <div className="work">
@@ -24,5 +26,9 @@ function Work({ workList }) {
     </div>
   );
 }
+
+Work.propTypes = {
+  workList: PropTypes.array,
+};
 
 export default Work;

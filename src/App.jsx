@@ -1,4 +1,4 @@
-import { useState, Fragment } from 'react';
+import { useState } from 'react';
 import './App.css';
 import PersonalInfo from './components/PersonalInfo.jsx';
 import PersonalInfoFormCard from './components/PersonalInfoFormCard.jsx';

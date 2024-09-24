@@ -1,3 +1,4 @@
+import { PropTypes } from 'prop-types';
 import _ from 'lodash';
 import Input from './Input.jsx';
 
@@ -57,5 +58,13 @@ function EducationForm({
     </form>
   );
 }
+
+EducationForm.propTypes = {
+  education: PropTypes.object,
+  setEducation: PropTypes.func,
+  handleSubmit: PropTypes.func,
+  handleCancel: PropTypes.func,
+  handleDelete: PropTypes.func,
+};
 
 export default EducationForm;

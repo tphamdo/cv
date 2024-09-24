@@ -1,9 +1,10 @@
+import { PropTypes } from 'prop-types';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
 function ExpandIcon({ handleClick, initClosed = true }) {
-  const [rotation, setRotation] = useState(closed ? 0 : -180);
+  const [rotation, setRotation] = useState(initClosed ? 0 : -180);
   return (
     <FontAwesomeIcon
       icon={faChevronUp}
@@ -19,5 +20,10 @@ function ExpandIcon({ handleClick, initClosed = true }) {
     />
   );
 }
+
+ExpandIcon.propTypes = {
+  handleClick: PropTypes.func,
+  initClosed: PropTypes.bool,
+};
 
 export default ExpandIcon;

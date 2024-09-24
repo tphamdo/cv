@@ -1,3 +1,4 @@
+import { PropTypes } from 'prop-types';
 import { useState } from 'react';
 import EducationForm from './EducationForm.jsx';
 import ExpandIcon from './ExpandIcon.jsx';
@@ -32,10 +33,11 @@ function EducationFormCard({ educationList, setEducationList }) {
     setShowForm(false);
   }
 
+  var body;
   if (!showBody) {
-    var body = null;
+    body = null;
   } else if (showForm) {
-    var body = (
+    body = (
       <EducationForm
         education={education}
         setEducation={setEducation}
@@ -45,13 +47,13 @@ function EducationFormCard({ educationList, setEducationList }) {
       />
     );
   } else {
-    var body = (
+    body = (
       <div className="card_body">
         {educationList.map((ed) => (
           <div
             className="card_entry"
             key={ed.id}
-            onClick={(e) => {
+            onClick={() => {
               setShowForm(true);
               setEducation(ed);
             }}
@@ -60,7 +62,7 @@ function EducationFormCard({ educationList, setEducationList }) {
           </div>
         ))}
         <button
-          onClick={(e) => {
+          onClick={() => {
             setShowForm(true);
             setEducation({});
           }}
@@ -84,5 +86,10 @@ function EducationFormCard({ educationList, setEducationList }) {
     </div>
   );
 }
+
+EducationFormCard.propTypes = {
+  educationList: PropTypes.array,
+  setEducationList: PropTypes.func,
+};
 
 export default EducationFormCard;

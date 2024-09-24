@@ -1,3 +1,5 @@
+import { PropTypes } from 'prop-types';
+
 function Input({
   type = 'text',
   onChange,
@@ -20,5 +22,14 @@ function Input({
     </div>
   );
 }
+
+Input.propTypes = {
+  type: PropTypes.string,
+  onChange: PropTypes.func,
+  value: PropTypes.string,
+  maxLength: PropTypes.string,
+  required: PropTypes.bool,
+  name: PropTypes.string,
+};
 
 export default Input;

@@ -1,3 +1,4 @@
+import { PropTypes } from 'prop-types';
 import Input from './Input.jsx';
 import _ from 'lodash';
 
@@ -50,5 +51,13 @@ function WorkForm({ work, setWork, handleSubmit, handleCancel, handleDelete }) {
     </form>
   );
 }
+
+WorkForm.propTypes = {
+  work: PropTypes.object,
+  setWork: PropTypes.func,
+  handleSubmit: PropTypes.func,
+  handleCancel: PropTypes.func,
+  handleDelete: PropTypes.func,
+};
 
 export default WorkForm;
