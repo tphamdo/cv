@@ -2,7 +2,7 @@ import Input from './Input.jsx';
 
 function WorkForm({ work, setWork, handleSubmit, handleCancel, handleDelete }) {
   return (
-    <form className="workForm workBody formBody" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <Input
         name="Company"
         value={work.company}
@@ -35,9 +35,9 @@ function WorkForm({ work, setWork, handleSubmit, handleCancel, handleDelete }) {
         onChange={(e) => setWork({ ...work, description: e.target.value })}
       />
       <div className="buttons">
-        <input type="Submit" />
-        <input type="button" value="Cancel" onClick={handleCancel} />
         <input type="button" value="Delete" onClick={handleDelete} />
+        <input type="button" value="Cancel" onClick={handleCancel} />
+        <input type="Submit" value="Submit" />
       </div>
     </form>
   );

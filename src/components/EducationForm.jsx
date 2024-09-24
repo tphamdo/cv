@@ -8,10 +8,7 @@ function EducationForm({
   handleDelete,
 }) {
   return (
-    <form
-      className="educationForm educationBody formBody"
-      onSubmit={handleSubmit}
-    >
+    <form onSubmit={handleSubmit}>
       <Input
         name="School"
         value={education.school}
@@ -44,9 +41,9 @@ function EducationForm({
         }
       />
       <div className="buttons">
-        <input type="Submit" />
-        <input type="button" value="Cancel" onClick={handleCancel} />
         <input type="button" value="Delete" onClick={handleDelete} />
+        <input type="button" value="Cancel" onClick={handleCancel} />
+        <input type="Submit" value="Submit" />
       </div>
     </form>
   );

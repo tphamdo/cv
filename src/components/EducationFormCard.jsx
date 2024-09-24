@@ -47,19 +47,18 @@ function EducationFormCard({ educationList, setEducationList }) {
   } else {
     var body = (
       <div className="card_body">
-        <div>
-          {educationList.map((ed) => (
-            <div
-              key={ed.id}
-              onClick={(e) => {
-                setShowForm(true);
-                setEducation(ed);
-              }}
-            >
-              {ed.school}
-            </div>
-          ))}
-        </div>
+        {educationList.map((ed) => (
+          <div
+            className="card_entry"
+            key={ed.id}
+            onClick={(e) => {
+              setShowForm(true);
+              setEducation(ed);
+            }}
+          >
+            {ed.school}
+          </div>
+        ))}
         <button
           onClick={(e) => {
             setShowForm(true);

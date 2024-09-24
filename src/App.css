@@ -36,13 +36,13 @@ body {
 .body {
   display: flex;
   justify-content: center;
-  gap: 24px;
+  gap: 30px;
 }
 
 .card {
   background-color: var(--white);
   padding: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 30px;
   border-radius: 8px;
   width: 300px;
 }
@@ -51,16 +51,23 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 1.3rem;
 }
 
 .card form {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  margin-top: 8px;
+  font-size: 1.2rem;
 }
 
 .card_body {
   margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 1.2rem;
 }
 
 .cv {
@@ -92,7 +99,10 @@ body {
   gap: 16px;
 }
 
-svg {
+svg,
+button,
+input[type='submit'],
+input[type='button'] {
   cursor: pointer;
 }
 
@@ -127,4 +137,11 @@ svg {
 textarea {
   resize: vertical;
   height: 100px;
+}
+
+.card_entry {
+  border: 1px solid;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 4px;
 }

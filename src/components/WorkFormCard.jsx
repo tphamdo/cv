@@ -47,19 +47,18 @@ function WorkFormCard({ workList, setWorkList }) {
   } else {
     var body = (
       <div className="card_body">
-        <div>
-          {workList.map((w) => (
-            <div
-              key={w.id}
-              onClick={(e) => {
-                setShowForm(true);
-                setWork(w);
-              }}
-            >
-              {w.company}
-            </div>
-          ))}
-        </div>
+        {workList.map((w) => (
+          <div
+            className="card_entry"
+            key={w.id}
+            onClick={(e) => {
+              setShowForm(true);
+              setWork(w);
+            }}
+          >
+            {w.company}
+          </div>
+        ))}
         <button
           onClick={(e) => {
             setShowForm(true);
