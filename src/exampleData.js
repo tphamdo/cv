@@ -16,6 +16,14 @@ const exampleData = {
       location: 'College Park, MD',
       id: uuidv4(),
     },
+    {
+      school: 'University of Maryland',
+      startDate: '08/2018',
+      endDate: '05/2022',
+      degree: 'Bachelors in Mathematics',
+      location: 'College Park, MD',
+      id: uuidv4(),
+    },
   ],
 };
 
