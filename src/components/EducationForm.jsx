@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import Input from './Input.jsx';
 
 function EducationForm({
@@ -7,6 +8,7 @@ function EducationForm({
   handleCancel,
   handleDelete,
 }) {
+  console.log(education);
   return (
     <form onSubmit={handleSubmit}>
       <Input
@@ -41,9 +43,16 @@ function EducationForm({
         }
       />
       <div className="buttons">
-        <input type="button" value="Delete" onClick={handleDelete} />
-        <input type="button" value="Cancel" onClick={handleCancel} />
-        <input type="Submit" value="Submit" />
+        {!_.isEmpty(education) && (
+          <input type="button" value="Delete" onClick={handleDelete} />
+        )}
+        <input
+          type="button"
+          value="Cancel"
+          className="cancel"
+          onClick={handleCancel}
+        />
+        <input type="Submit" />
       </div>
     </form>
   );

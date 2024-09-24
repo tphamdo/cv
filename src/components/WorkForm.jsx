@@ -1,4 +1,5 @@
 import Input from './Input.jsx';
+import _ from 'lodash';
 
 function WorkForm({ work, setWork, handleSubmit, handleCancel, handleDelete }) {
   return (
@@ -35,9 +36,16 @@ function WorkForm({ work, setWork, handleSubmit, handleCancel, handleDelete }) {
         onChange={(e) => setWork({ ...work, description: e.target.value })}
       />
       <div className="buttons">
-        <input type="button" value="Delete" onClick={handleDelete} />
-        <input type="button" value="Cancel" onClick={handleCancel} />
-        <input type="Submit" value="Submit" />
+        {!_.isEmpty(work) && (
+          <input type="button" value="Delete" onClick={handleDelete} />
+        )}
+        <input
+          type="button"
+          value="Cancel"
+          className="cancel"
+          onClick={handleCancel}
+        />
+        <input type="Submit" />
       </div>
     </form>
   );

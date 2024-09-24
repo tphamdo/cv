@@ -15,6 +15,13 @@ select {
   font: inherit;
 }
 
+svg,
+button,
+input[type='submit'],
+input[type='button'] {
+  cursor: pointer;
+}
+
 :root {
   --grey: #f3f4f6;
   --white: #ffffff;
@@ -44,7 +51,7 @@ body {
   padding: 16px;
   margin-bottom: 30px;
   border-radius: 8px;
-  width: 300px;
+  width: 350px;
 }
 
 .card_header {
@@ -62,12 +69,40 @@ body {
   font-size: 1.2rem;
 }
 
+.card input[type='text'],
+.card input[type='tel'],
+.card input[type='email'] {
+  width: 100%;
+}
+
 .card_body {
   margin-top: 8px;
   display: flex;
   flex-direction: column;
   gap: 8px;
   font-size: 1.2rem;
+}
+
+textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.card_entry {
+  border: 1px solid;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.buttons {
+  display: flex;
+  margin-top: 8px;
+  gap: 4px;
+}
+
+.cancel {
+  margin-left: auto;
 }
 
 .cv {
@@ -99,13 +134,6 @@ body {
   gap: 16px;
 }
 
-svg,
-button,
-input[type='submit'],
-input[type='button'] {
-  cursor: pointer;
-}
-
 .education,
 .work {
   padding: 0px 48px;
@@ -132,16 +160,4 @@ input[type='button'] {
 
 .description {
   margin-top: 2px;
-}
-
-textarea {
-  resize: vertical;
-  height: 100px;
-}
-
-.card_entry {
-  border: 1px solid;
-  border-radius: 4px;
-  cursor: pointer;
-  padding: 4px;
 }
