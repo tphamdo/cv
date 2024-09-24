@@ -1,9 +1,9 @@
 function Education({ educationList }) {
   return (
     <div className="education">
-      <h3 className="header"> Education </h3>
+      <h3 className="cv_header">Education</h3>
       {educationList.map((ed) => (
-        <div className="education_entry" key={ed.id}>
+        <div className="cv_entry" key={ed.id}>
           <div className="left">
             <div key="date">
               {ed.startDate} - {ed.endDate}
@@ -11,7 +11,7 @@ function Education({ educationList }) {
             <div key="location">{ed.location}</div>
           </div>
           <div className="right">
-            <div className="school" key="school">
+            <div className="bold" key="school">
               {ed.school}
             </div>
             <div key="degree">{ed.degree}</div>

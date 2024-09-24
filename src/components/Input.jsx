@@ -7,7 +7,7 @@ function Input({
   name = '',
 }) {
   return (
-    <>
+    <div>
       <label htmlFor={name}>{name}</label>
       <input
         type={type}
@@ -17,7 +17,7 @@ function Input({
         id={name}
         value={value}
       />
-    </>
+    </div>
   );
 }
 

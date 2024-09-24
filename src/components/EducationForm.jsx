@@ -8,7 +8,10 @@ function EducationForm({
   handleDelete,
 }) {
   return (
-    <form className="educationForm educationBody" onSubmit={handleSubmit}>
+    <form
+      className="educationForm educationBody formBody"
+      onSubmit={handleSubmit}
+    >
       <Input
         name="School"
         value={education.school}

@@ -2,9 +2,9 @@ import Input from './Input.jsx';
 
 function PersonalInfoFormCard({ info, setInfo }) {
   return (
-    <div className="personalInfoCard">
+    <div className="card">
       <h3 className="header"> Personal Info </h3>
-      <form className="personalInfoForm personalInfoBody">
+      <form className="body">
         <Input
           name="Name"
           value={info.name}

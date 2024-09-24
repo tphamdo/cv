@@ -1,24 +1,24 @@
 import { useState } from 'react';
-import EducationForm from './EducationForm.jsx';
+import WorkForm from './WorkForm.jsx';
 import ExpandIcon from './ExpandIcon.jsx';
 import { v4 as uuidv4 } from 'uuid';
 
-function EducationFormCard({ educationList, setEducationList }) {
+function WorkFormCard({ workList, setWorkList }) {
   const [showForm, setShowForm] = useState(false);
   const [showBody, setShowBody] = useState(true);
-  const [education, setEducation] = useState({});
+  const [work, setWork] = useState({});
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (education.id) {
+    if (work.id) {
       // is edit
-      let newEducationList = educationList.map((e) => {
-        return e.id === education.id ? education : e;
+      let newWorkList = workList.map((e) => {
+        return e.id === work.id ? work : e;
       });
-      setEducationList(newEducationList);
+      setWorkList(newWorkList);
     } else {
-      let newEd = { ...education, id: uuidv4() };
-      setEducationList([...educationList, newEd]);
+      let newWork = { ...work, id: uuidv4() };
+      setWorkList([...workList, newWork]);
     }
     setShowForm(false);
   }
@@ -28,7 +28,7 @@ function EducationFormCard({ educationList, setEducationList }) {
   }
 
   function handleDelete() {
-    setEducationList(educationList.filter((e) => e.id !== education.id));
+    setWorkList(workList.filter((e) => e.id !== work.id));
     setShowForm(false);
   }
 
@@ -36,9 +36,9 @@ function EducationFormCard({ educationList, setEducationList }) {
     var body = null;
   } else if (showForm) {
     var body = (
-      <EducationForm
-        education={education}
-        setEducation={setEducation}
+      <WorkForm
+        work={work}
+        setWork={setWork}
         handleSubmit={handleSubmit}
         handleCancel={handleCancel}
         handleDelete={handleDelete}
@@ -48,22 +48,22 @@ function EducationFormCard({ educationList, setEducationList }) {
     var body = (
       <div className="card_body">
         <div>
-          {educationList.map((ed) => (
+          {workList.map((w) => (
             <div
-              key={ed.id}
+              key={w.id}
               onClick={(e) => {
                 setShowForm(true);
-                setEducation(ed);
+                setWork(w);
               }}
             >
-              {ed.school}
+              {w.company}
             </div>
           ))}
         </div>
         <button
           onClick={(e) => {
             setShowForm(true);
-            setEducation({});
+            setWork({});
           }}
         >
           Add
@@ -75,7 +75,7 @@ function EducationFormCard({ educationList, setEducationList }) {
   return (
     <div className="card">
       <div className="card_header">
-        <h3> Education </h3>
+        <h3> Work </h3>
         <ExpandIcon
           initClosed={false}
           handleClick={() => setShowBody((show) => !show)}
@@ -86,4 +86,4 @@ function EducationFormCard({ educationList, setEducationList }) {
   );
 }
 
-export default EducationFormCard;
+export default WorkFormCard;
